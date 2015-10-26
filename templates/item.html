@@ -4,13 +4,40 @@
     <input type="text" class="form-control" id="firstname" placeholder="First Name" ng-model="inputForm.firstname">
   </div>
   <div class="form-group">
-    <label for="lastname">Last Name</label>
-    <input type="text" class="form-control" id="lastname" placeholder="Last Name" ng-model="inputForm.lastname">
+    <label for="secondname">Second Name</label>
+    <input type="text" class="form-control" id="secondname" placeholder="Second Name" ng-model="inputForm.secondname">
   </div>
   <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" placeholder="Email" ng-model="inputForm.email">
+    <label for="thirdname">Third Name</label>
+    <input type="text" class="form-control" id="thirdname" placeholder="Third Name" ng-model="inputForm.thirdname">
+  </div>
+  <div class="form-group">
+    <label for="school">School</label>
+    <input type="text" class="form-control" id="school" placeholder="School" ng-model="inputForm.school">
+  </div>
+  <div class="form-group">
+    <label for="village">Village</label>
+    <input type="text" class="form-control" id="village" placeholder="Village" ng-model="inputForm.village">
+  </div>
+  <div class="form-group">
+    <label for="payam">Payam</label>
+    <input type="text" class="form-control" id="payam" placeholder="Payam" ng-model="inputForm.payam">
+  </div>
+  <div class="form-group">
+    <label for="county">County</label>
+    <input type="text" class="form-control" id="county" placeholder="County" ng-model="inputForm.county">
+  </div>
+  <div class="form-group">
+    <label for="state">State</label>
+    <input type="text" class="form-control" id="state" placeholder="State" ng-model="inputForm.state">
+  </div> <div class="form-group">
+    <label for="geo">Geo</label>
+    <input type="text" class="form-control" id="geo" placeholder="Geo" ng-model="inputForm.geo">
+  </div>
+  <div class="form-group">
+    <label for="photo">Photo</label>
+    <input type="text" class="form-control" id="photo" placeholder="Photo" ng-model="inputForm.photo">
   </div>
   <button type="button" class="btn btn-danger" ui-sref="list">Cancel</button>
-  <button type="button" class="btn btn-success" ng-click="save(inputForm.firstname, inputForm.lastname, inputForm.email)">Save</button>
+  <button type="button" class="btn btn-success" ui-sref="list" ng-click="main.save(inputForm.firstname, inputForm.secondname, inputForm.thirdname, inputForm.school, inputForm.village, inputForm.payam, inputForm.county, inputForm.state, inputForm.geo, inputForm.photo)">Save</button>
 </form>
