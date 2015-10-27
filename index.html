@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Angular CouchPouch</title>
+	<title>Simple Verification App</title>
 
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 	  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -12,11 +12,15 @@
 	  <script src="bower_components/angular-pouchdb/angular-pouchdb.js"></script>
 	  <script src="js/bootstrap.min.js"></script>
 	  <script src="js/app.js"></script>
-	  <script src="js/MainController.js"></script>
+	  <script src="js/controllers/MainController.js"></script>
+	  <script src="js/controllers/UpdateController.js"></script>
+	  <script src="js/controllers/LoginController.js"></script>
 	  
 </head>
 <body ng-app="pouchapp" ng-controller="MainController as main">
 	
+	<h1 id="main-title">Simple Verification App</h1>
+
 	<div style="padding: 20px">
     <div ui-view></div>
   </div>

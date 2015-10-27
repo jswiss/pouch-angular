@@ -11,6 +11,12 @@ angular.module("pouchapp", ["ui.router", "pouchdb"])
       "templateUrl": "templates/list.html",
       "controller": "MainController"
     })
+    $stateProvider
+    .state("login", {
+      "url": "/",
+      "templateUrl": "templates/login.html",
+      "controller": "LoginController"
+    })
     .state("item", {
       "url": "/item/:documentId/:documentRevision",
       "templateUrl": "templates/item.html",
