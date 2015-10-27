@@ -64,12 +64,16 @@ angular.module("pouchapp")
 	    $scope.doc = res;
 	  }
 
+	  // function put()//image attachment stuffs here
+
     local.post(jsonDocument)
     .then(get)
     .then(bind)
     .catch(error);
 
 	}
+
+
 
 	// self.put = function(doc) {
 	// 	doc._deleted = true;
