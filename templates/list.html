@@ -28,7 +28,7 @@
             <td>{{item.county}}</td>
             <td>{{item.state}}</td>
             <td>{{item.geo}}</td>
-            <td><a href="" ui-sref="item({ documentId: item._id, documentRevision: item._rev })">edit</a> | <a href="" ng-click="main.delete(item._id, item._rev)">delete</a></td>
+            <td><a href="" ui-sref="item({ documentId: item._id, documentRevision: item._rev, objectToPass: item })">edit</a> | <a href="" ng-click="main.delete(item._id, item._rev)">delete</a></td>
         </tr>
     </tbody>
 </table>

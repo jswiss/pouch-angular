@@ -9,38 +9,16 @@ angular.module("pouchapp")
 	var local  = pouchDB('chickenwaffles');
 	var remote = 'localhost://swissjoshua:waurumbekjuba@5984/chickenwaffles';
 
-	// local.sync(remote, {
- //  	live: true
-	// })
-	// .on('change', function (change) {
-	//   // yo, something changed!
-	// })
-	// .on('error', function (err) {
-	//   // yo, we got an error! (maybe the user went offline?)
-	// });
+	if ($stateParams.objectToPass === undefined) {
+		self.record = {};
+	} else {
+		self.record = $stateParams.objectToPass;
+		console.log(self.record.firstname);
+	};
 
-	// function push(){
- //        Pouch.replicate(local, remote,
- //        function(err,resp){
- //            if(err){
- //                alert("Push failed!")
- //            }
- //        })
- //        console.log('pushed!')
- //    };
+	// self.record = {};
 
-	self.record;
-	console.log(self.record);
-
-	
-	// function sync() {
-	// 	  syncDom.setAttribute('data-sync-state', 'syncing');
-	// 	  var opts = {live: true};
-	// 	  console.log(opts)
-	// 	  console.log(syncError)
-	// 	  local.replicate.to(remote, opts, syncError);
-	// 	  local.replicate.from(remote, opts, syncError);
-	// 	};
+	// console.log(self.record);
 
 	self.items = [];
 
@@ -51,19 +29,20 @@ angular.module("pouchapp")
 		});
 	});
 
+
+
 	self.save = function() {
 
 		var jsonDocument = self.record;
-		// console.log($stateParams);
 
     if($stateParams.documentId) {
       jsonDocument["_id"] = $stateParams.documentId;
       jsonDocument["_rev"] = $stateParams.documentRevision;
     }
 
-    console.log(jsonDocument)
-    self.items.push(jsonDocument);
-    console.log(self.items)
+    // console.log(jsonDocument)
+    self.items.push(jsonDocument); //kinda cheating, calling before successful response that data is in db	
+    // console.log(self.items)
 
     function error(err) {
     	$log.error(err);
@@ -79,6 +58,7 @@ angular.module("pouchapp")
 
 	  function bind(res) {
 	    $scope.doc = res;
+	    self.record = {};
 	  }
 
 	  // function put()//image attachment stuffs here
@@ -88,19 +68,23 @@ angular.module("pouchapp")
     .then(bind)
     .catch(error);
 
-   var rep = PouchDB.replicate(local, remote, {
-		  live: true,
-		  retry: true
-			}).on('change', function (change) {
+   	var rep = function() {
+   		PouchDB.replicate(local, remote, {
+		  	live: true,
+		  	retry: true
+			})
+   			.on('change', function (change) {
 			  // yo, something changed!
 				}).on('paused', function (info) {
 			  // replication was paused, usually because of a lost connection
-					}).on('active', function (info) {
+				}).on('active', function (info) {
 			  // replication was resumed
-						}).on('error', function (err) {
+				}).on('error', function (err) {
 			  // totally unhandled error (shouldn't happen)
 				});
+		}
 
+		rep();
 	}
 
 	self.delete = function(documentId, documentRevision) {
@@ -110,13 +94,13 @@ angular.module("pouchapp")
     	});
     })
     .catch(function(res) {
-    	console.error("TODO: Handle doc not deleted error", res);
+    	// console.error("TODO: Handle doc not deleted error", res);
     });
 
   };
 
   self.get = function(documentId) {
-  	console.log("GET");
+  	// console.log("GET");
     local.get(documentId);
 
    //  $rootScope.$on("$pouchDB:change", function(event, data) {
