@@ -4,27 +4,43 @@ angular.module("pouchapp")
 
 	var self = this;
 
+	// var reader = new FileReader();
+
 	var local  = pouchDB('chickenwaffles');
 	var remote = 'localhost://swissjoshua:waurumbekjuba@5984/chickenwaffles';
 
-	local.sync(remote, {
-  	live: true
-	})
-	.on('change', function (change) {
-	  // yo, something changed!
-	})
-	.on('error', function (err) {
-	  // yo, we got an error! (maybe the user went offline?)
-	});
+	// local.sync(remote, {
+ //  	live: true
+	// })
+	// .on('change', function (change) {
+	//   // yo, something changed!
+	// })
+	// .on('error', function (err) {
+	//   // yo, we got an error! (maybe the user went offline?)
+	// });
+
+	// function push(){
+ //        Pouch.replicate(local, remote,
+ //        function(err,resp){
+ //            if(err){
+ //                alert("Push failed!")
+ //            }
+ //        })
+ //        console.log('pushed!')
+ //    };
 
 	self.record;
+	console.log(self.record);
+
 	
-	function sync() {
-		  syncDom.setAttribute('data-sync-state', 'syncing');
-		  var opts = {live: true};
-		  local.replicate.to(remote, opts, syncError);
-		  local.replicate.from(remote, opts, syncError);
-		};
+	// function sync() {
+	// 	  syncDom.setAttribute('data-sync-state', 'syncing');
+	// 	  var opts = {live: true};
+	// 	  console.log(opts)
+	// 	  console.log(syncError)
+	// 	  local.replicate.to(remote, opts, syncError);
+	// 	  local.replicate.from(remote, opts, syncError);
+	// 	};
 
 	self.items = [];
 
@@ -38,6 +54,7 @@ angular.module("pouchapp")
 	self.save = function() {
 
 		var jsonDocument = self.record;
+		// console.log($stateParams);
 
     if($stateParams.documentId) {
       jsonDocument["_id"] = $stateParams.documentId;
@@ -71,15 +88,20 @@ angular.module("pouchapp")
     .then(bind)
     .catch(error);
 
+   var rep = PouchDB.replicate(local, remote, {
+		  live: true,
+		  retry: true
+			}).on('change', function (change) {
+			  // yo, something changed!
+				}).on('paused', function (info) {
+			  // replication was paused, usually because of a lost connection
+					}).on('active', function (info) {
+			  // replication was resumed
+						}).on('error', function (err) {
+			  // totally unhandled error (shouldn't happen)
+				});
+
 	}
-
-
-
-	// self.put = function(doc) {
-	// 	doc._deleted = true;
-	// 	return local.put(doc);
-
-	// }
 
 	self.delete = function(documentId, documentRevision) {
     local.remove(documentId, documentRevision).then(function(res) {
