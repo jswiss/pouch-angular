@@ -38,6 +38,9 @@ angular.module("pouchapp")
 
 	self.save = function() {
 
+		var formData = new FormData();
+		formData.append('image', )
+
 		blobUtil.imgSrcToBlob(self.record.image.src)
 			.then(function(blob) {
 				console.log(blob);
