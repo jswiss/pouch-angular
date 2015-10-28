@@ -38,15 +38,15 @@ angular.module("pouchapp")
 
 	self.save = function() {
 
-		var formData = new FormData();
-		formData.append('image', )
+		// var formData = new FormData();
+		// formData.append('image', )
 
-		blobUtil.imgSrcToBlob(self.record.image.src)
-			.then(function(blob) {
-				console.log(blob);
-			}).catch(function(err) {
-				console.log(err);
-			})
+		// blobUtil.imgSrcToBlob(self.record.image.src)
+		// 	.then(function(blob) {
+		// 		console.log(blob);
+		// 	}).catch(function(err) {
+		// 		console.log(err);
+		// 	})
 
 		var jsonDocument = self.record;
 

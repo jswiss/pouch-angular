@@ -9,17 +9,17 @@ angular.module('pouchapp', ['ionic', 'pouchdb'])
   $stateProvider
     .state("list", {
       "url": "/list",
-      "templateUrl": "../templates/list.html",
+      "templateUrl": "templates/list.html",
       "controller": "ListController as list"
     })
     .state("login", {
       "url": "/",
-      "templateUrl": "../templates/login.html",
+      "templateUrl": "templates/login.html",
       "controller": "LoginController as login"
     })
     .state("item", {
       "url": "/item/:documentId/:documentRevision",
-      "templateUrl": "../templates/item.html",
+      "templateUrl": "templates/item.html",
       "controller": "ItemController as item",
       "params": {objectToPass: null}
     });
