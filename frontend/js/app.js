@@ -8,7 +8,8 @@ angular.module("pouchapp", ["ui.router", "pouchdb"])
 	$stateProvider
     .state("list", {
       "url": "/list",
-      "templateUrl": "templates/list.html"
+      "templateUrl": "templates/list.html",
+      "controller": "ListController as list"
     })
     .state("login", {
       "url": "/",
@@ -18,7 +19,7 @@ angular.module("pouchapp", ["ui.router", "pouchdb"])
     .state("item", {
       "url": "/item/:documentId/:documentRevision",
       "templateUrl": "templates/item.html",
-      "controller": "MainController",
+      "controller": "ItemController as item",
       "params": {objectToPass: null}
     });
 	$urlRouterProvider.otherwise("list");

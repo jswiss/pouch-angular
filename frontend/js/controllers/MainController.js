@@ -1,19 +1,36 @@
 angular.module("pouchapp")
 
-.controller("MainController", function($scope, $rootScope, $state, $log, $stateParams, pouchDB) {
+.controller("MainController", function($scope, $rootScope, $state, $log, $stateParams, $location, pouchDB) {
 
 	var self = this;
+
+
+
 
 	// var reader = new FileReader();
 
 	var local  = pouchDB('chickenwaffles');
 	var remote = 'localhost://swissjoshua:waurumbekjuba@5984/chickenwaffles';
 
-	if ($stateParams.objectToPass === undefined) {
-		self.record = {};
+
+	// if ($stateParams.objectToPass === null) {
+	if (!!$stateParams.objectToPass) {
+		// is an object
+		
+		local.get($stateParams.objectToPass._id)
+			.then(function(response) {
+				console.log(response)
+				self.title = 'the title'
+				return response;
+			})
+			.finally(function(response) {
+				self.record = response;
+			})
+		// console.log($stateParams.objectToPass._id)
+		// console.log($stateParams.objectToPass._rev)
 	} else {
-		self.record = $stateParams.objectToPass;
-		console.log(self.record.firstname);
+		console.log('no record')
+		self.record = {};
 	};
 
 	// self.record = {};
