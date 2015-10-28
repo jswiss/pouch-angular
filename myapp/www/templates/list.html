@@ -1,0 +1,34 @@
+<button class="btn btn-primary" ui-sref="item">New Pupil</button>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Photo</th>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>Third Name</th>
+            <th>School</th>
+            <th>Village</th>
+            <th>Payam</th>
+            <th>County</th>
+            <th>State</th>
+            <th>Geo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in list.items track by $index">
+            <td>{{item.photo}}</td>
+            <td>{{item.firstname}}</td>
+            <td>{{item.secondname}}</td>
+            <td>{{item.thirdname}}</td>
+            <td>{{item.school}}</td>
+            <td>{{item.village}}</td>
+            <td>{{item.payam}}</td>
+            <td>{{item.county}}</td>
+            <td>{{item.state}}</td>
+            <td>{{item.geo}}</td>
+            <td><a ui-sref="item({ documentId: item._id, documentRevision: item._rev, objectToPass: item })">edit</a> | <a ng-click="list.delete(item._id, item._rev)">delete</a></td>
+        </tr>
+    </tbody>
+</table>

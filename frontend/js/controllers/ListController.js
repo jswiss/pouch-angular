@@ -33,11 +33,6 @@ angular.module("pouchapp")
   self.get = function(documentId) {
   	// console.log("GET");
     local.get(documentId);
-
-   //  $rootScope.$on("$pouchDB:change", function(event, data) {
-   //  	$scope.items[data.doc._id] = data.doc;
-   //  	$scope.$apply();
- 	 // });
   };
 
 })

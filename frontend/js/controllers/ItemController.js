@@ -1,6 +1,6 @@
 angular.module("pouchapp")
 
-.controller("ItemController", function($scope, $rootScope, $state, $log, $stateParams, $location, pouchDB) {
+.controller("ItemController", function($scope, $rootScope, $state, $log, $stateParams, $location, $window, pouchDB) {
 
 	console.log('item controller')
 
@@ -12,6 +12,7 @@ angular.module("pouchapp")
 
 	var local  = pouchDB('chickenwaffles');
 	var remote = 'localhost://swissjoshua:waurumbekjuba@5984/chickenwaffles';
+	var blobUtil = $window.blobUtil;
 
 	if (!!$stateParams.documentId) {
 		// is an object
@@ -25,4 +26,75 @@ angular.module("pouchapp")
 			console.log('no record')
 			self.record = {};
 		};
+
+	self.items = [];
+
+	local.allDocs({ include_docs: true }).then(function(res) {
+		// console.log(res);
+		return self.items = res.rows.map(function(res) {
+			return res.doc;
+		});
+	});
+
+	self.save = function() {
+
+		blobUtil.imgSrcToBlob(self.record.image.src)
+			.then(function(blob) {
+				console.log(blob);
+			}).catch(function(err) {
+				console.log(err);
+			})
+
+		var jsonDocument = self.record;
+
+    if($stateParams.documentId) {
+      jsonDocument["_id"] = $stateParams.documentId;
+      jsonDocument["_rev"] = $stateParams.documentRevision;
+    }
+
+    self.items.push(jsonDocument); //kinda cheating, calling before successful response that data is in db	
+
+
+    function error(err) {
+    	$log.error(err);
+  	}
+
+	  function get(res) {
+	    if (!res.ok) {
+	      return error(res);
+	    }
+	    return local.get(res.id);
+	  }
+
+	  function bind(res) {
+	    $scope.doc = res;
+	    self.record = {};
+	  }
+
+    local.post(jsonDocument)
+    .then(get)
+    .then(bind)
+    .catch(error);
+
+   	var rep = function() {
+   		PouchDB.replicate(local, remote, {
+		  	live: true,
+		  	retry: true
+			})
+   			.on('change', function (change) {
+			  // yo, something changed!
+				}).on('paused', function (info) {
+			  // replication was paused, usually because of a lost connection
+				}).on('active', function (info) {
+			  // replication was resumed
+				}).on('error', function (err) {
+			  // totally unhandled error (shouldn't happen)
+				});
+		}
+
+		rep();
+	}
+
+
+
 })
