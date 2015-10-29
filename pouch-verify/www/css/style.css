@@ -2,3 +2,19 @@
 	display: inline-block;
 	float: right;
 }
+
+div.bar.bar-header.bar-dark {
+	margin-bottom: 30px;
+}
+
+div.item {
+	margin-top: 20px;
+}
+
+.firstname-form {
+	margin-top: 10px;
+}
+
+.btn-success {
+	margin-bottom: 70px;
+}

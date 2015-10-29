@@ -1,8 +1,13 @@
 <ion-scroll delegate-handle="taskScroll" direction="y">
-  <form>
+  
+  <div class="bar bar-header bar-dark">
+    <h1 class="title">Add New Pupil</h1>
+  </div>
+
+  <form class="pupil-form">
   <br>
   <br>
-    <div class="form-group">
+    <div class="form-group firstname-form">
       <label for="firstname">First Name</label>
       <input type="text" class="form-control" id="firstname" placeholder="First Name" ng-model="item.record.firstname">
     </div>
@@ -34,17 +39,13 @@
       <label for="state">State</label>
       <input type="text" class="form-control" id="state" placeholder="State" ng-model="item.record.state">
     </div> 
-    <!-- <div class="form-group">
-      <label for="geo">Geo</label>
-      <input type="text" class="form-control" id="geo" placeholder="Geo" ng-model="item.record.geo">
-    </div> -->
-  <!--   <div class="form-group">
+    <div class="form-group">
       <label for="photo">Photo</label>
       <input type="file" class="form-control" id="photo" accept="image/*;capture=camera" placeholder="Photo" ng-model="item.record.photo">
     </div> -->
-  <!-- 
+  
     <img ng-src="{{srcImage || 'img/dummy.jpg'}}" id="srcImage" width="250 " height="250" style="display: block; margin: 0 auto;"/><br/>
-    <button class="button button-full button-positive " ng-click="takeImage() ">Take Image</button><br/> -->
+    <button class="button button-full button-positive " ng-click="takeImage() ">Take Image</button><br/>
    
     <button type="button" class="btn-danger" ui-sref="list">Cancel</button>
     <button type="button" class="btn-success" ui-sref="list" ng-click="item.save()">Save</button>
