@@ -1,48 +1,16 @@
-<br />
-<div class="card" ng-repeat="item in list.items track by $index">
-  <div class="item item-avatar">
-    <img src="">
-    <h2>{{ item.firstname }} {{ item.secondname }} {{ item.thirdname }}</h2>
-    <h3>School: {{ item.school }}</h3>
-    <h3>Village: {{ item.village }}</h3>
-    <h3>Payam: {{ item.payam }}</h3>
-    <h4>{{ item.county }} | {{ item.state }}</h4>
-    <p>ID: {{ item._id }}</p>
-    <div class="edit-delete">
-      <a ui-sref="item({ documentId: item._id, documentRevision: item._rev, objectToPass: item })">edit</a> | <a href="" ng-click="list.delete(item._id, item._rev)">delete</a>
-    </div
+<ion-scroll delegate-handle="taskScroll" direction="y">
+  <div class="card" ng-repeat="item in list.items track by $index">
+    <div class="item item-avatar">
+      <img src="">
+      <h2>{{ item.firstname }} {{ item.secondname }} {{ item.thirdname }}</h2>
+      <h3>School: {{ item.school }}</h3>
+      <h3>Village: {{ item.village }}</h3>
+      <h3>Payam: {{ item.payam }}</h3>
+      <h4>{{ item.county }} | {{ item.state }}</h4>
+      <p>ID: {{ item._id }}</p>
+      <div class="edit-delete">
+        <a ui-sref="item({ documentId: item._id, documentRevision: item._rev, objectToPass: item })">edit</a> | <a href="" ng-click="list.delete(item._id, item._rev)">delete</a>
+      </div>
+    </div>
   </div>
-</div>
-
-<!-- table>
-    <thead>
-        <tr>
-          <th>Photo</th>
-          <th>First Name</th>
-          <th>Second Name</th>
-          <th>Third Name</th>
-          <th>School</th>
-          <th>Village</th>
-          <th>Payam</th>
-          <th>County</th>
-          <th>State</th>
-          <th>Geo</th>
-          <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="item in list.items track by $index">
-          <td>{{item.photo}}</td>
-          <td>{{item.firstname}}</td>
-          <td>{{item.secondname}}</td>
-          <td>{{item.thirdname}}</td>
-          <td>{{item.school}}</td>
-          <td>{{item.village}}</td>
-          <td>{{item.payam}}</td>
-          <td>{{item.county}}</td>
-          <td>{{item.state}}</td>
-          <td>{{item.geo}}</td>
-          <td><a ui-sref="item({ documentId: item._id, documentRevision: item._rev, objectToPass: item })">edit</a> | <a ng-click="list.delete(item._id, item._rev)">delete</a></td>
-        </tr>
-    </tbody>
-</table> -->
+</ion-scroll>

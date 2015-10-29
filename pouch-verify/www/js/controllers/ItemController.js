@@ -1,6 +1,6 @@
 angular.module("pouchapp")
 
-.controller("ItemController", function($scope, $rootScope, $state, $log, $stateParams, $location, $window, pouchDB) {
+.controller("ItemController", function($scope, $rootScope, $state, $log, $stateParams, $location, $window, $cordovaCamera, pouchDB) {
 
 	console.log('item controller')
 
@@ -48,9 +48,11 @@ angular.module("pouchapp")
 		// 		console.log(err);
 		// 	})
 
-		var cardId = self._id.substr(self._id.length - 12);
+		// var cardId = self._id.substr(self._id.length - 12);
 
 		var jsonDocument = self.record;
+
+		console.log(jsonDocument)
 
     if($stateParams.documentId) {
       jsonDocument["_id"] = $stateParams.documentId;
@@ -65,6 +67,7 @@ angular.module("pouchapp")
   	}
 
 	  function get(res) {
+	  	console.log('inside get')
 	    if (!res.ok) {
 	      return error(res);
 	    }
@@ -72,6 +75,7 @@ angular.module("pouchapp")
 	  }
 
 	  function bind(res) {
+	  	console.log('inside bind')
 	    $scope.doc = res;
 	    self.record = {};
 	  }
