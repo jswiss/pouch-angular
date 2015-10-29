@@ -15,6 +15,15 @@ div.item {
 	margin-top: 10px;
 }
 
-.btn-success {
+.btn-balanced,.button-assertive {
 	margin-bottom: 70px;
+}
+
+.button-energized {
+	margin: 3px;
+	vertical-align: center;
+}
+
+.pupil-form {
+	margin-left: 15px;
 }

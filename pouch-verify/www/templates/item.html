@@ -8,46 +8,52 @@
   <br>
   <br>
     <div class="form-group firstname-form">
-      <label for="firstname">First Name</label>
-      <input type="text" class="form-control" id="firstname" placeholder="First Name" ng-model="item.record.firstname">
+      <label for="firstname">
+        <input type="text" class="form-control" id="firstname" placeholder="First Name" ng-model="item.record.firstname">
+      </label>
     </div>
     <div class="form-group">
-      <label for="secondname">Second Name</label>
-      <input type="text" class="form-control" id="secondname" placeholder="Second Name" ng-model="item.record.secondname">
+      <label for="secondname">
+        <input type="text" class="form-control" id="secondname" placeholder="Second Name" ng-model="item.record.secondname">
+      </label>
     </div>
     <div class="form-group">
-      <label for="thirdname">Third Name</label>
-      <input type="text" class="form-control" id="thirdname" placeholder="Third Name" ng-model="item.record.thirdname">
+      <label for="thirdname">
+        <input type="text" class="form-control" id="thirdname" placeholder="Third Name" ng-model="item.record.thirdname">
+      </label>
     </div>
     <div class="form-group">
-      <label for="school">School</label>
-      <input type="text" class="form-control" id="school" placeholder="School" ng-model="item.record.school">
+      <label for="school">
+        <input type="text" class="form-control" id="school" placeholder="School" ng-model="item.record.school">
+      </label>
     </div>
     <div class="form-group">
-      <label for="village">Village</label>
-      <input type="text" class="form-control" id="village" placeholder="Village" ng-model="item.record.village">
+      <label for="village">
+        <input type="text" class="form-control" id="village" placeholder="Village" ng-model="item.record.village">
+      </label>
     </div>
     <div class="form-group">
-      <label for="payam">Payam</label>
-      <input type="text" class="form-control" id="payam" placeholder="Payam" ng-model="item.record.payam">
+      <label for="payam">
+        <input type="text" class="form-control" id="payam" placeholder="Payam" ng-model="item.record.payam">
+      </label>
     </div>
     <div class="form-group">
-      <label for="county">County</label>
-      <input type="text" class="form-control" id="county" placeholder="County" ng-model="item.record.county">
+      <label for="county">
+        <input type="text" class="form-control" id="county" placeholder="County" ng-model="item.record.county">
+      </label>
     </div>
     <div class="form-group">
-      <label for="state">State</label>
-      <input type="text" class="form-control" id="state" placeholder="State" ng-model="item.record.state">
+      <label for="state">
+        <input type="text" class="form-control" id="state" placeholder="State" ng-model="item.record.state">
+      </label>
     </div> 
     <div class="form-group">
-      <label for="photo">Photo</label>
-      <input type="file" class="form-control" id="photo" accept="image/*;capture=camera" placeholder="Photo" ng-model="item.record.photo">
-    </div> -->
-  
-    <img ng-src="{{srcImage || 'img/dummy.jpg'}}" id="srcImage" width="250 " height="250" style="display: block; margin: 0 auto;"/><br/>
-    <button class="button button-full button-positive " ng-click="takeImage() ">Take Image</button><br/>
-   
-    <button type="button" class="btn-danger" ui-sref="list">Cancel</button>
-    <button type="button" class="btn-success" ui-sref="list" ng-click="item.save()">Save</button>
+      <label for="photo">
+        <button class="button button-energized" ng-model="item.record.photo" ng-click="takePhoto() ">Take Photo</button><br/>
+        <img ng-src="{{srcImage || 'img/dummy.jpg'}}" id="srcImage" width="150 " height="150" style="display: block; margin: 0 auto;"/><br/>
+      </label>
+    </div>
+    <button type="button" class="button button-assertive" ui-sref="list">Cancel</button>
+    <button type="button" class="button button-balanced" ui-sref="list" ng-click="item.save()">Save</button>
   </form>
 </ion-scroll>
