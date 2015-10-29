@@ -3,10 +3,17 @@
   <div class="item item-avatar">
     <img src="">
     <h2>{{ item.firstname }} {{ item.secondname }} {{ item.thirdname }}</h2>
+    <h3>School: {{ item.school }}</h3>
+    <h3>Village: {{ item.village }}</h3>
+    <h3>Payam: {{ item.payam }}</h3>
+    <h4>{{ item.county }} | {{ item.state }}</h4>
+    <p>ID: {{ item._id }}</p>
+    <div class="edit-delete">
+      <a ui-sref="item({ documentId: item._id, documentRevision: item._rev, objectToPass: item })">edit</a> | <a href="" ng-click="list.delete(item._id, item._rev)">delete</a>
+    </div
   </div>
 </div>
 
-<h1>test!</h1>
 <!-- table>
     <thead>
         <tr>

@@ -48,6 +48,8 @@ angular.module("pouchapp")
 		// 		console.log(err);
 		// 	})
 
+		var cardId = self._id.substr(self._id.length - 12);
+
 		var jsonDocument = self.record;
 
     if($stateParams.documentId) {

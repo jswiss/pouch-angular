@@ -10,6 +10,7 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
 
     <!-- pouchdb scripts -->
@@ -35,10 +36,11 @@
       </ion-header-bar>
 
       <ion-nav-view class="slide-left-right"></ion-nav-view>
-        
-      <ion-content>
-      </ion-content>
       
+      <ion-scroll direction="y">  
+        <ion-content>
+        </ion-content>
+      </ion-scroll>
       <ion-tabs class="tabs-positive">
       <ion-tab icon="ion-home" ui-sref="list">
       <ion-nav-view name="list"></ion-nav-view>
